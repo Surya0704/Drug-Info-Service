@@ -42,7 +42,7 @@ public class DrugsController {
     }
 
     //update function
-    @PostMapping("/update/drugs/{id}")
+    @PostMapping("/update/{id}")
     public ResponseEntity<DrugsData> updateDrugsData(@RequestBody DrugsData drugsData ,
                                                      @PathVariable("id") String drugId){
         DrugsData updatedDrugsData = drugService.updateDrugsData(drugsData,drugId);
