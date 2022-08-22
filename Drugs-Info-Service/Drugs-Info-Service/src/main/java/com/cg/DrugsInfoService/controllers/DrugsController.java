@@ -41,6 +41,14 @@ public class DrugsController {
         return ResponseEntity.ok(savedDrugsData);
     }
 
+    @PutMapping("/drugs/{id}")
+    public ResponseEntity<DrugsData> updateDrugsData(@RequestBody DrugsData drugsData ,
+                                                     @PathVariable("id") String drugId){
+        DrugsData updatedDrugsData = drugService.updateDrugsData(drugsData,drugId);
+        return  ResponseEntity.ok(updatedDrugsData);
+
+    }
+
     @DeleteMapping("/delete/{id}")
     public void deleteDrugsData(@PathVariable("id") String drugId) throws ResourceNotFoundException
     {
