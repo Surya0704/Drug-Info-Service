@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,32 @@ public class DrugServiceImplementationClass implements DrugService {
     @Override
     public Optional<DrugsData> findDrugsById(String drugId) {
         return drugsRepository.findById(drugId);
+    }
+
+    @Override
+    public DrugsData
+    updateDrugsData(DrugsData drugsData,
+                    String drugId) {
+
+        DrugsData dgDB
+                = drugsRepository.findById(drugId)
+                .get();
+
+        if (Objects.nonNull(drugsData.getDrugName())
+                && !"".equalsIgnoreCase(
+                drugsData.getDrugName())) {
+            dgDB.setDrugName(
+                    drugsData.getDrugName());
+        }
+
+        if(Objects.nonNull(drugsData.getDrugPrice())
+                && !"".equalsIgnoreCase(
+                        String.valueOf(drugsData.getDrugPrice()))) {
+            dgDB.setDrugPrice(
+                    drugsData.getDrugPrice()
+            );
+        }
+        return  drugsRepository.save(dgDB);
     }
 
     @Override

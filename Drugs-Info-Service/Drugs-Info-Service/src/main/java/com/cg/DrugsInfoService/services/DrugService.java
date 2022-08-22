@@ -10,6 +10,8 @@ public interface DrugService {
     public List<DrugsData> getAllDrugsData();
     public Optional<DrugsData> findDrugsById(String drugId);
 
+    DrugsData updateDrugsData(DrugsData drugsData, String drugId);
+
     // Optional<DrugsData> getDrugsById(String drugId);
 
     //    DrugsData updateDrugsData(DrugsData drugsData, String drugId);
