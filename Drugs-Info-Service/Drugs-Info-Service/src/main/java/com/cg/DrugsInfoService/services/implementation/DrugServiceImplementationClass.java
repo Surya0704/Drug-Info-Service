@@ -4,10 +4,12 @@ import com.cg.DrugsInfoService.models.DrugsData;
 import com.cg.DrugsInfoService.repository.DrugsRepository;
 import com.cg.DrugsInfoService.services.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DrugServiceImplementationClass implements DrugService {
 
     @Autowired
