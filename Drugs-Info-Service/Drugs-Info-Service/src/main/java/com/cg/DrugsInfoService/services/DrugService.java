@@ -8,12 +8,12 @@ import java.util.Optional;
 public interface DrugService {
     DrugsData saveDrugsData(DrugsData drugsData);
     public List<DrugsData> getAllDrugsData();
-    public Optional<DrugsData> findDrugsById(String drugId);
+    public Optional<DrugsData> findDrugsById(int drugId);
 
-    DrugsData updateDrugsData(DrugsData drugsData, String drugId);
+    DrugsData updateDrugsData(DrugsData drugsData, int drugId);
 
-    // Optional<DrugsData> getDrugsById(String drugId);
+    // Optional<DrugsData> getDrugsById(int drugId);
 
-    //    DrugsData updateDrugsData(DrugsData drugsData, String drugId);
-    void deleteDrugsData(String drugId);
+    //    DrugsData updateDrugsData(DrugsData drugsData, int drugId);
+    void deleteDrugsData(int drugId);
 }

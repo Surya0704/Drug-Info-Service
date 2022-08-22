@@ -3,23 +3,32 @@ package com.cg.DrugsInfoService.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Drugs_Data")
 public class DrugsData {
 
-    private String drugId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int drugId;
 
+    @Column(name = "Drug_Name")
     private String drugName;
 
+    @Column(name = "Drug_Price")
     private double drugPrice;
 
+    @Column(name = "Drug_Quantity")
     private int drugQuantity;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "Exp_Date")
     private LocalDate expiryDate;
 
-    public DrugsData(String drugId, String drugName, double drugPrice, int drugQuantity, LocalDate expiryDate) {
+    public DrugsData(int drugId, String drugName, double drugPrice, int drugQuantity, LocalDate expiryDate) {
         this.drugId = drugId;
         this.drugName = drugName;
         this.drugPrice = drugPrice;
@@ -30,11 +39,11 @@ public class DrugsData {
 
     }
 
-    public String getDrugId() {
+    public int getDrugId() {
         return drugId;
     }
 
-    public void setDrugId(String drugId) {
+    public void setDrugId(int drugId) {
         this.drugId = drugId;
     }
 

@@ -27,14 +27,14 @@ public class DrugServiceImplementationClass implements DrugService {
     }
 
     @Override
-    public Optional<DrugsData> findDrugsById(String drugId) {
+    public Optional<DrugsData> findDrugsById(int drugId) {
         return drugsRepository.findById(drugId);
     }
 
     @Override
     public DrugsData
     updateDrugsData(DrugsData drugsData,
-                    String drugId) {
+                    int drugId) {
 
         DrugsData dgDB
                 = drugsRepository.findById(drugId)
@@ -58,7 +58,7 @@ public class DrugServiceImplementationClass implements DrugService {
     }
 
     @Override
-    public void deleteDrugsData(String drugId) {
+    public void deleteDrugsData(int drugId) {
         drugsRepository.deleteById(drugId);
 
     }

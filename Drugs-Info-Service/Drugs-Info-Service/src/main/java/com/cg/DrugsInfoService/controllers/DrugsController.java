@@ -27,7 +27,7 @@ public class DrugsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DrugsData> findDrugsById(@PathVariable("id") String drugId) throws ResourceNotFoundException {
+    public ResponseEntity<DrugsData> findDrugsById(@PathVariable("id") int drugId) throws ResourceNotFoundException {
         Optional<DrugsData> drugsDataOptional = drugService.findDrugsById(drugId);
         if (drugsDataOptional.isEmpty()) {
             throw new ResourceNotFoundException("No medicine found with id: " + drugId);
@@ -44,14 +44,14 @@ public class DrugsController {
     //update function
     @PostMapping("/update/{id}")
     public ResponseEntity<DrugsData> updateDrugsData(@RequestBody DrugsData drugsData ,
-                                                     @PathVariable("id") String drugId){
+                                                     @PathVariable("id") int drugId){
         DrugsData updatedDrugsData = drugService.updateDrugsData(drugsData,drugId);
         return  ResponseEntity.ok(updatedDrugsData);
 
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteDrugsData(@PathVariable("id") String drugId) throws ResourceNotFoundException
+    public void deleteDrugsData(@PathVariable("id") int drugId) throws ResourceNotFoundException
     {
         Optional<DrugsData> drugsData = drugService.findDrugsById(drugId);
         if(drugsData.isEmpty()) {
