@@ -6,6 +6,10 @@ import com.cg.DrugsInfoService.models.DrugsData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface DrugsRepository extends MongoRepository<DrugsData,Integer> {
+
+    Optional<DrugsData> getDrugsDataByDrugName(String drugName);
 }

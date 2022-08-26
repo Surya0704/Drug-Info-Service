@@ -26,6 +26,7 @@ public class DoctorsData {
     private String name;
     private String phNo;
     private int exp;
+    //private DrugsData drugsData;
 
     @NotNull(message = "required")
     private String email;

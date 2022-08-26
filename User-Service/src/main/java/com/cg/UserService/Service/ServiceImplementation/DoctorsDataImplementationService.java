@@ -1,6 +1,7 @@
 package com.cg.UserService.Service.ServiceImplementation;
 
 import com.cg.UserService.Models.DoctorsData;
+//import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Repository.DoctorRepository;
 import com.cg.UserService.Service.DoctorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ public class DoctorsDataImplementationService implements DoctorDataService {
 
     @Autowired
     DoctorRepository doctorRepository;
+
+//    @Autowired
+//    ApiCall apiCall;
+
+    //DrugsData drugsData = apiCall.getDrugsData()
 
 
     @Override
