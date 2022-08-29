@@ -17,7 +17,9 @@ public interface DoctorDataService {
 
     DoctorsData updateDoctorsData(DoctorsData doctorsData, String email);
 
-    public Optional<DoctorsData> getDoctorsDataByEmail(String email);
+   public Optional<DoctorsData> getDoctorsDataByEmail(String email);
+
+   // public DoctorsData getDoctorsDataByEmail(String email);
 
     public String deleteDoctorsData(int doctorId);
 

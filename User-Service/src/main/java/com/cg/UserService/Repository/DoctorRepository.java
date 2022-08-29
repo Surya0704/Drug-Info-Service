@@ -11,7 +11,8 @@ public interface DoctorRepository extends MongoRepository<DoctorsData,Integer> {
 
    // Optional<DoctorsData> getDoctorsDataByEmail(String email);
 
-    Optional<DoctorsData> getDoctorsDataByEmail(String email);
+   // DoctorsData getDoctorsDataByEmail(String email);
+   Optional<DoctorsData> getDoctorsDataByEmail(String email);
 
 
 }

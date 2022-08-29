@@ -43,6 +43,12 @@ public class DoctorsDataImplementationService implements DoctorDataService {
         return doctorRepository.getDoctorsDataByEmail(email);
     }
 
+
+//    @Override
+//    public DoctorsData getDoctorsDataByEmail(String email) {
+//        return doctorRepository.getDoctorsDataByEmail(email);
+//    }
+
     @Override
     public DoctorsData updateDoctorsData(DoctorsData doctorsData, String email) {
         DoctorsData dgDB
