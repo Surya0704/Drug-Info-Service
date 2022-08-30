@@ -3,6 +3,7 @@ package com.cg.UserService.Security.Service;
 import com.cg.UserService.Models.DoctorsData;
 import com.cg.UserService.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 //@Service
@@ -19,7 +22,7 @@ import java.util.Optional;
 //    @Autowired
 //    DoctorRepository doctorRepository;
 //    @Override
-//    @Transactional
+//   @Transactional
 //    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 ////            User user = doctorRepository.getDoctorsDataByEmail(email)
 ////                    .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + email));
@@ -35,16 +38,27 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
+
+        List<SimpleGrantedAuthority> roles = null;
         Optional<DoctorsData> doctorsData = doctorRepository.getDoctorsDataByEmail(email);
         if (doctorsData == null) {
             throw new UsernameNotFoundException(email);
-        } else {
-//            DoctorsData a = doctorsData.get();
-//            DoctorsData b = doctorsData.get();
-            String username = doctorsData.get().getEmail();
-            String password = doctorsData.get().getDoctor_password();
-            return new User(username, password, new ArrayList<>());
+        }
+        else {
+                //checking for Admin Role
+                if (email.equals("admin"))
+                {
+                    roles = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+                    return new User("admin", "admin", roles);
+                }
+                //checking for User Role
+                else
+                {
+                    String username = doctorsData.get().getEmail();
+                    String password = doctorsData.get().getDoctor_password();
+                    roles = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+                    return new User(username, password, roles);
+                }
         }
     }
 }
