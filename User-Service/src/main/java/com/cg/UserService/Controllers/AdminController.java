@@ -2,10 +2,14 @@ package com.cg.UserService.Controllers;
 
 import com.cg.UserService.Exception.ResourceNotFoundException;
 import com.cg.UserService.Models.DoctorsData;
+import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Service.DoctorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,9 @@ public class AdminController {
 
     @Autowired
     DoctorDataService doctorDataService;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @GetMapping("/alldoctors")
     public ResponseEntity<List<DoctorsData>> getAllDoctors() throws ResourceNotFoundException {
@@ -40,6 +47,60 @@ public class AdminController {
         }
         doctorDataService.deleteDoctorsData(doctorId);
     }
+
+    //****Drugs****
+
+    //saving drugs by admin
+    @PostMapping("/drugs/save")
+    public ResponseEntity<DrugsData> saveDrugs(@RequestBody DrugsData drugsData) {
+
+
+        DrugsData drugsData1 = new DrugsData(drugsData.getDrugId(),drugsData.getDrugName(), drugsData.getDrugPrice(), drugsData.getDrugQuantity(), drugsData.getExpiryDate());
+        DrugsData response =
+                restTemplate.postForObject("http://Drugs-Info-Service/drugs/save", drugsData1, DrugsData.class);
+        return ResponseEntity.ok(response);
+
+    }
+    //deleting any drug by admin
+    @DeleteMapping("/delete/{id}")
+    public String deleteDrugsData(@PathVariable("id") int drugId) throws  Exception{
+
+        if(drugId != 0){
+            restTemplate.delete("http://Drugs-Info-Service/drugs/delete/" + drugId);
+            return "Deleted Succesfully";
+        }
+        else {
+            throw new Exception("No Id Found");
+        }
+
+    }
+
+    //getting all the drug by admin
+    @GetMapping("/drugs/all")
+    public DrugsData[] getAllDrugs() throws ResourceNotFoundException{
+        ResponseEntity<DrugsData[]> response =
+                restTemplate.getForEntity("http://Drugs-Info-Service/drugs/", DrugsData[].class);
+        DrugsData[] drugsData = response.getBody();
+        return (drugsData);
+    }
+
+    //updating any drug data by admin
+    @PutMapping("/drugs/update/{id}")
+    public DrugsData updateDrugsData(@RequestBody DrugsData drugsData,
+                                     @PathVariable("id") int drugId) {
+        RequestEntity<DrugsData> request = RequestEntity
+                .put("http://Drugs-Info-Service/drugs/update/"+drugId)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(drugsData);
+        ResponseEntity<DrugsData> response = restTemplate.exchange(request,DrugsData.class);
+        DrugsData drugsData1=response.getBody();
+        return drugsData1;
+    }
+
+
+
+    
+
 
 
 }

@@ -5,6 +5,7 @@ import com.cg.UserService.Exception.ResourceNotFoundException;
 import com.cg.UserService.Models.DoctorsData;
 //import com.cg.UserService.Models.DrugResource;
 //import com.cg.UserService.Models.DrugsData;
+import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Service.DoctorDataService;
 import com.cg.UserService.Service.SequenceGeneratorService;
 //import com.cg.UserService.Service.ServiceImplementation.ApiCall;
@@ -27,10 +28,10 @@ public class DoctorController {
     @Autowired
     RestTemplate restTemplate;
 
-//    @Autowired
-//    ApiCall apiCall;
+
     @Autowired
     DoctorDataService doctorDataService;
+
 
 
 
@@ -59,6 +60,21 @@ public class DoctorController {
         }
         return ResponseEntity.ok(doctorsData.get());
 
+    }
+
+    //Fetching All Drugs from DrugInfo for Doctor
+    @GetMapping("/drugs/all")
+    public DrugsData[] getAllDrugs() throws ResourceNotFoundException{
+        ResponseEntity<DrugsData[]> response =
+                restTemplate.getForEntity("http://Drugs-Info-Service/drugs/", DrugsData[].class);
+        DrugsData[] drugsData = response.getBody();
+        return (drugsData);
+    }
+    //Fetching A Drug by name from DrugInfo for Doctor
+    @RequestMapping("/{drugsname}")
+    public DrugsData getDrugsData(@PathVariable("drugsname")String drugsname) {
+
+        return restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" + drugsname, DrugsData.class);
     }
 }
 
