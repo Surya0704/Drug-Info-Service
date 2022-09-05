@@ -6,16 +6,15 @@ import com.cg.UserService.Models.DoctorsData;
 //import com.cg.UserService.Models.DrugResource;
 //import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Models.DrugsData;
+import com.cg.UserService.Models.Order;
 import com.cg.UserService.Service.DoctorDataService;
 import com.cg.UserService.Service.SequenceGeneratorService;
 //import com.cg.UserService.Service.ServiceImplementation.ApiCall;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -70,11 +69,36 @@ public class DoctorController {
         DrugsData[] drugsData = response.getBody();
         return (drugsData);
     }
+
     //Fetching A Drug by name from DrugInfo for Doctor
     @RequestMapping("/{drugsname}")
     public DrugsData getDrugsData(@PathVariable("drugsname")String drugsname) {
 
         return restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" + drugsname, DrugsData.class);
+    }
+
+    //***********************Ordering Drugs*****************************
+
+
+
+     @RequestMapping("/order")
+    public ResponseEntity<String> placeOrder(@RequestBody Order order) throws ResourceNotFoundException {
+//        if(getDrugsData(drugsname) == null) {
+//            throw  new ResourceNotFoundException("No drugs found with name "+drugsname);
+//        }
+//        else {
+//            Order order =new Order();
+//            DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" + drugsname,
+//                    DrugsData.class);
+//            double cost = drugsData.getDrugPrice()* order.getQuantity();
+//            order.setCost(cost);
+//            return ("Your order with order Id "+order.getId()+" with value "+cost+" is placed");
+         Order order1 =new Order(order.getId(), order.getCost(),order.getDate(),order.getQuantity(),order.getDrugname());
+
+         String s = restTemplate.postForObject("http://Order-Info-Service/order/save", order1, String.class);
+            //return "";
+         return ResponseEntity.ok(s);
+
     }
 }
 

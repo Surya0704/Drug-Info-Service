@@ -24,7 +24,7 @@ public class AdminController {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("/alldoctors")
+    @GetMapping("/doctors/all")
     public ResponseEntity<List<DoctorsData>> getAllDoctors() throws ResourceNotFoundException {
         List<DoctorsData> list = doctorDataService.getAllDoctors();
         if (list.isEmpty()) {
@@ -48,7 +48,7 @@ public class AdminController {
         doctorDataService.deleteDoctorsData(doctorId);
     }
 
-    //****Drugs****
+    //*******************************************Drugs******************************************************************
 
     //saving drugs by admin
     @PostMapping("/drugs/save")
