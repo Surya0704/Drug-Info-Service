@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -83,6 +84,16 @@ public class AdminController {
         DrugsData[] drugsData = response.getBody();
         return (drugsData);
     }
+
+    //getting drugs by id for admin
+    @GetMapping("/drugs/{id}")
+    public DrugsData getDrugsbyId(@PathVariable("id") int drugId) throws ResourceNotFoundException{
+       // ResponseEntity<DrugsData> response =
+         return restTemplate.getForObject("http://Drugs-Info-Service/drugs/" +drugId, DrugsData.class);
+        //DrugsData drugsData = response.getBody();
+        //return (drugsData);
+    }
+
 
     //updating any drug data by admin
     @PutMapping("/drugs/update/{id}")

@@ -27,4 +27,6 @@ public class Order {
     private int quantity;
     //    private DoctorsData doctorsData;
     private String drugname;
+    private String doctorname;
+    private String doctoremail;
 }

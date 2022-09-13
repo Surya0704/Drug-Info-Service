@@ -2,6 +2,7 @@ package com.cg.OrderService.Controller;
 
 import com.cg.OrderService.Exception.NoOrderPresentException;
 import com.cg.OrderService.Exception.ResourceNotFoundException;
+import com.cg.OrderService.Model.DoctorsData;
 import com.cg.OrderService.Model.DrugsData;
 import com.cg.OrderService.Model.Order;
 import com.cg.OrderService.Service.OrderService;
@@ -26,6 +27,8 @@ public class OrderController {
     Order order = new Order();
 
     DrugsData drugsData = new DrugsData();
+
+    DoctorsData doctorsData = new DoctorsData();
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
 
@@ -51,16 +54,24 @@ public class OrderController {
     public ResponseEntity<String> saveOrder(@RequestBody Order order) throws ResourceNotFoundException{
 
         String drugname = order.getDrugname();
-        if(drugname == null){
-            throw new ResourceNotFoundException("No Drug Found with name "+drugname);
+        String doctoremail = order.getDoctoremail();
+        if((drugname)== null || (doctoremail == null)){
+            throw new ResourceNotFoundException("No Drug Found with name "+drugname +
+                    "and no doctor found by name "+ doctoremail);
         }
         else {
             DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" +
                     drugname, DrugsData.class);
+//            DoctorsData doctorsData = restTemplate.getForObject("http://User-Service/doctors/username/" +
+//                    doctoremail, DoctorsData.class);
             double cost = drugsData.getDrugPrice() * order.getQuantity();
+            //String dName = doctorsData.getName();
             order.setCost(cost);
+            //order.setDoctorname(dName);
             order.setId(sequenceGeneratorService.getSequenceNumber(Order.SEQUENCE_NAME));
-            String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed";
+            //String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by "+
+                   //dName;
+            String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by " ;
             Order savedOrder = orderService.saveOrder(order);
             return ResponseEntity.ok(x);
         }

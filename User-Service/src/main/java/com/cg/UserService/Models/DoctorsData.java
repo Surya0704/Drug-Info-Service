@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Document(collection = "DoctorsData")
 public class DoctorsData {
 
@@ -25,7 +24,7 @@ public class DoctorsData {
     private int doctorId;
     private String name;
     private String phNo;
-    private int exp;
+    //private int exp;
     //private DrugsData drugsData;
 
     @NotNull(message = "required")

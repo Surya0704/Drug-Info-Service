@@ -7,6 +7,7 @@ import com.cg.UserService.Models.DoctorsData;
 //import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Models.DrugsData;
 import com.cg.UserService.Models.Order;
+import com.cg.UserService.Security.Model.AuthenticationRequest;
 import com.cg.UserService.Service.DoctorDataService;
 import com.cg.UserService.Service.SequenceGeneratorService;
 //import com.cg.UserService.Service.ServiceImplementation.ApiCall;
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/doctors")
 public class DoctorController {
 
@@ -31,15 +33,12 @@ public class DoctorController {
     @Autowired
     DoctorDataService doctorDataService;
 
+    AuthenticationRequest authenticationRequest = new AuthenticationRequest();
 
 
 
-    @PostMapping("/save")
-    public ResponseEntity<DoctorsData> saveDoctorsData(@RequestBody DoctorsData doctorsData)  {
-        doctorsData.setDoctorId((sequenceGeneratorService.getSequenceNumber(DoctorsData.SEQUENCE_NAME)));
-        DoctorsData savedDoctorsData = doctorDataService.saveDoctorsData(doctorsData);
-        return ResponseEntity.ok(savedDoctorsData);
-    }
+
+
 
 
     @PutMapping("/update/username/{email}")
@@ -71,7 +70,7 @@ public class DoctorController {
     }
 
     //Fetching A Drug by name from DrugInfo for Doctor
-    @RequestMapping("/{drugsname}")
+    @GetMapping("/drugs/{drugsname}")
     public DrugsData getDrugsData(@PathVariable("drugsname")String drugsname) {
 
         return restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" + drugsname, DrugsData.class);
@@ -83,22 +82,12 @@ public class DoctorController {
 
      @RequestMapping("/order")
     public ResponseEntity<String> placeOrder(@RequestBody Order order) throws ResourceNotFoundException {
-//        if(getDrugsData(drugsname) == null) {
-//            throw  new ResourceNotFoundException("No drugs found with name "+drugsname);
-//        }
-//        else {
-//            Order order =new Order();
-//            DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" + drugsname,
-//                    DrugsData.class);
-//            double cost = drugsData.getDrugPrice()* order.getQuantity();
-//            order.setCost(cost);
-//            return ("Your order with order Id "+order.getId()+" with value "+cost+" is placed");
-         Order order1 =new Order(order.getId(), order.getCost(),order.getDate(),order.getQuantity(),order.getDrugname());
 
+         Order order1 =new Order(order.getId(), order.getCost(),order.getDate(),order.getQuantity(),
+                 order.getDrugname(),order.getDoctorname(),order.getDoctoremail());
          String s = restTemplate.postForObject("http://Order-Info-Service/order/save", order1, String.class);
-            //return "";
+         String s1 = s+ authenticationRequest.getUsername();
          return ResponseEntity.ok(s);
-
     }
 }
 

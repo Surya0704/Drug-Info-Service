@@ -32,10 +32,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/authenticate").permitAll()
-                .antMatchers("/admin/doctors/all","/admin/doctors/delete/{id}","/admin/drugs/**").hasRole("ADMIN")
-                .antMatchers("/doctors/save","/doctors/update/username/{username}",
-                        "/doctors/drugs/all","/doctors/{drugsname}").hasRole("USER")
+                .antMatchers("/auth/signin","/signup").permitAll()
+                .antMatchers("/admin/doctors/all","/admin/doctors/delete/{id}",
+                        "/admin/drugs/{id}","/admin/drugs/update/{id}","/admin/drugs/save").hasRole("ADMIN")
+                .antMatchers("/doctors/update/username/{username}",
+                        "/doctors/drugs/all","/doctors/drugs/{drugsname}","/doctors/order").hasRole("USER")
                 .anyRequest().authenticated().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

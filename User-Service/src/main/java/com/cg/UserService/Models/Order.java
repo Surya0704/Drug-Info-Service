@@ -28,4 +28,6 @@ public class Order {
     //    private DoctorsData doctorsData;
     //private DrugsData drugsData;
     private String drugname;
+    private String doctorname;
+    private String doctoremail;
 }
