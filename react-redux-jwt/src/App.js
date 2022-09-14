@@ -21,6 +21,7 @@ import CreateDrugComponent from "./components/createdrugs";
 import ViewDrugs from "./components/viewdrugs";
 import ListDrugs from "./components/listDrugs";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 
@@ -81,7 +82,9 @@ class App extends Component {
                <Route path = "/view-drug/:id" component = {ViewDrugs}></Route>
                <Route path = "/Drugs" exact component = {ListDrugs}></Route>
              </Switch>
+             <Footer/>
            </div>
+           
            
          
          

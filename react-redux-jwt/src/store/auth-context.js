@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 
 let logoutTimer;
 
@@ -65,4 +65,4 @@ export const AuthContextProvider = (props) => {
   );
 };
 
-export default AuthContext;
+export default AuthContext;*/

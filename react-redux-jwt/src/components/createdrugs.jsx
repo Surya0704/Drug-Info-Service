@@ -111,7 +111,7 @@ class CreateDrugComponent extends Component {
                 <br></br>
                 <div className="container bg-image3">
                     <div className="row">
-                        <div className="card col-md-10 offset-md-3 offset-md-3">
+                        <div className="card col-md-10 offset-md-3 offset-md-3 bg">
                             {
                                 this.getTitle()
                             }
