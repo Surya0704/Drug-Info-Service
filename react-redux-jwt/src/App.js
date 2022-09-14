@@ -18,6 +18,8 @@ import { clearMessage } from "./actions/message";
 import { history } from './helpers/history';
 import EventBus from "./common/EventBus";
 import CreateDrugComponent from "./components/createdrugs";
+import ViewDrugs from "./components/viewdrugs";
+import ListDrugs from "./components/listDrugs";
 import Navbar from "./components/Navbar";
 
 
@@ -60,6 +62,44 @@ class App extends Component {
       currentUser: undefined,
     });
   }
+  render() {
+    const { currentUser} = this.state;
+  
+    return (
+      <Router history={history}>
+        <div>
+        <div >
+             
+             <Switch>
+               <Route exact path={["/", "/home"]} component={Home} />
+               <Route exact path="/login" component={Login} />
+               <Route exact path="/register" component={Register} />
+               <Route exact path="/profile" component={Profile} />
+               <Route exact path="/user" component={User} />
+               {/* <Route exact path="/drugs" component={Drugs} /> */}
+               <Route exact path="/add-drug/:id" component={CreateDrugComponent} />
+               <Route path = "/view-drug/:id" component = {ViewDrugs}></Route>
+               <Route path = "/Drugs" exact component = {ListDrugs}></Route>
+             </Switch>
+           </div>
+           
+         
+         
+         </div>
+       </Router>
+     );
+   }
+  }
+  
+  function mapStateToProps(state) {
+    const { user } = state.auth;
+    return {
+      user,
+    };
+  }
+  
+  export default connect(mapStateToProps)(App);
+  
 
   /*render() {
     const { currentUser} = this.state;
@@ -134,38 +174,3 @@ class App extends Component {
   }
 }*/
 
-render() {
-  const { currentUser} = this.state;
-
-  return (
-    <Router history={history}>
-      <div>
-      <div >
-           
-           <Switch>
-             <Route exact path={["/", "/home"]} component={Home} />
-             <Route exact path="/login" component={Login} />
-             <Route exact path="/register" component={Register} />
-             <Route exact path="/profile" component={Profile} />
-             <Route exact path="/user" component={User} />
-             {/* <Route exact path="/drugs" component={Drugs} /> */}
-             <Route exact path="/add-drug/:id" component={CreateDrugComponent} />
-           </Switch>
-         </div>
-         
-       
-       
-       </div>
-     </Router>
-   );
- }
-}
-
-function mapStateToProps(state) {
-  const { user } = state.auth;
-  return {
-    user,
-  };
-}
-
-export default connect(mapStateToProps)(App);

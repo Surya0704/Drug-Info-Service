@@ -12,11 +12,23 @@ function Navbar() {
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item ">
-                            <a class="nav-link " href="/"><h4>Home</h4></a>
+                            <a class="nav-link " href="/profile"><h4>Home</h4></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/add-drug/"><h4>Drugs</h4></a>
+                            <a class="nav-link" href="/drugs"><h4>Drugs</h4></a>
                         </li>
+                        {/*<li class="nav-item">
+                            <a class="nav-link" href="/add-drug/save"><h4>Add Drugs</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add-drug/:id"><h4>Update Drugs</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/delete-drug"><h4>Delete Drugs</h4></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/view-drug/:id"><h4>View Drugs</h4></a>
+                        </li>*/}
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)"><h4>Doctors</h4></a>
                         </li>

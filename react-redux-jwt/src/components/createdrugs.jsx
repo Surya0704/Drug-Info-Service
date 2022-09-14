@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import DrugService from '../services/drugService';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
+import Navbar from './Navbar';
 
 class CreateDrugComponent extends Component {
 
@@ -30,12 +31,13 @@ class CreateDrugComponent extends Component {
     componentDidMount() {
 
         // step 4
-        if (this.state.id === '_add') {
+        if (this.state.id === 'save') {
             return
         } else {
             DrugService.getDrugById(this.state.id).then((res) => {
                 let drug = res.data;
                 this.setState({
+                    //drugId = drugId,
                     drugName: drug.drugName,
                     drugPrice: drug.drugPrice,
                     drugQuantity: drug.drugQuantity,
@@ -46,13 +48,15 @@ class CreateDrugComponent extends Component {
     }
     saveOrUpdateDrug = (e) => {
         e.preventDefault();
-        let drug = { drugName: this.state.drugName, drugPrice: this.state.drugPrice,drugQuantity:this.state.drugQuantity, expiryDate: this.state.expiryDate };
+        let drug = {/*drugId:this.state.drugId ,*/drugName: this.state.drugName, drugPrice: this.state.drugPrice,drugQuantity:this.state.drugQuantity, expiryDate: this.state.expiryDate };
         console.log('drug => ' + JSON.stringify(drug));
 
         // step 5
         if (this.state.id === 'save') {
             DrugService.saveDrugs(drug).then(res => {
                 this.props.history.push('/profile');
+                console.log("Drugs Added Successsfully");
+                alert("Drugs Added Successsfully");
             });
         } else {
             DrugService.updateDrugs(drug, this.state.id).then(res => {
@@ -97,6 +101,8 @@ class CreateDrugComponent extends Component {
         return (
             
             <div>
+                <Navbar/>
+
                 <br></br>
                 <div className="container">
                     <div className="row">
@@ -113,17 +119,17 @@ class CreateDrugComponent extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label> Drug Price: </label>
-                                        <input placeholder="Last Name" name="drugPrice" className="form-control"
+                                        <input placeholder="Drug Price" name="drugPrice" className="form-control"
                                             value={this.state.drugPrice} onChange={this.changedrugPriceHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label> Quantity: </label>
-                                        <input placeholder="Email Address" name="drugQuantity" className="form-control"
+                                        <input placeholder="Quantity" name="drugQuantity" className="form-control"
                                             value={this.state.drugQuantity} onChange={this.changedrugQuantityHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label> Date: </label>
-                                        <input placeholder="Email Address" name="expiryDate" className="form-control"
+                                        <input placeholder="Date" name="expiryDate" className="form-control"
                                             value={this.state.expiryDate} onChange={this.changeexpiryDateHandler} />
                                     </div>
 
