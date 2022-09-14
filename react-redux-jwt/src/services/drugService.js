@@ -42,7 +42,7 @@ class DrugService {
         return axios.put(DRUG_API_BASE_URL + 'admin/drugs/update/' + drugId, drugs, { headers });
     }*/
     updateDrugs(drugs, drugId){
-        return axios.put(DRUG_API_BASE_URL_1 + 'drugs/:id' + drugId, drugs);
+        return axios.put(DRUG_API_BASE_URL_1 + 'drugs/update/' + drugId, drugs);
     }
 
     /*deleteDrugs(drugId){

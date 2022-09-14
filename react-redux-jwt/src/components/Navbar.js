@@ -1,11 +1,11 @@
 //import { render } from "@testing-library/react";
 import React, { Component } from "react";
-
+import { MdOutlineLogout } from "react-icons/md"
 function Navbar() {
     return (
         <nav class="navbar navbar-expand-sm text-white">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" href="/home"><h3>XYZ Pharmacy</h3></a>
+                <a class="navbar-brand text-white" onClick={"/home"}><h3>XYZ Pharmacy</h3></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="colapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -20,14 +20,16 @@ function Navbar() {
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)"><h4>Doctors</h4></a>
                         </li>
+                        
                     </ul>
                     
                 </div>
             </div>
             <form class="d-flex">
                         <input class="form-control me-2 " type="text" placeholder="Search Drugs  " />
-                        <button class="btn text-white" type="button">Search</button>
-                    </form>
+                        <button class="btn text-white" type="button">Search</button>              
+            </form>
+            <a class="nav-link" href="/home"><h1><MdOutlineLogout/></h1></a> 
         </nav>
 
 

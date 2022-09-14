@@ -4,6 +4,10 @@ import DrugService from '../services/drugService';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
+//import { DatePicker } from "@material-ui/pickers";
+import { DatePicker } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 class CreateDrugComponent extends Component {
 
@@ -54,13 +58,14 @@ class CreateDrugComponent extends Component {
         // step 5
         if (this.state.id === 'save') {
             DrugService.saveDrugs(drug).then(res => {
-                this.props.history.push('/profile');
+                this.props.history.push('/Drugs');
                 console.log("Drugs Added Successsfully");
                 alert("Drugs Added Successsfully");
             });
         } else {
             DrugService.updateDrugs(drug, this.state.id).then(res => {
-                this.props.history.push('/profile');
+                this.props.history.push('/Drugs');
+                alert("Drug Updated Successfully");
             });
         }
     }
@@ -104,13 +109,13 @@ class CreateDrugComponent extends Component {
                 <Navbar/>
 
                 <br></br>
-                <div className="container">
+                <div className="container bg-image3">
                     <div className="row">
                         <div className="card col-md-10 offset-md-3 offset-md-3">
                             {
                                 this.getTitle()
                             }
-                            <div className="card-body">
+                            <div className="card-body ">
                                 <form>
                                     <div className="form-group">
                                         <label> Drug Name: </label>
@@ -129,7 +134,7 @@ class CreateDrugComponent extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label> Date: </label>
-                                        <input placeholder="Date" name="expiryDate" className="form-control"
+                                        < input placeholder="Date" name="expiryDate" className="form-control"
                                             value={this.state.expiryDate} onChange={this.changeexpiryDateHandler} />
                                     </div>
 
