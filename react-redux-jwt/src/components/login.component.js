@@ -1,186 +1,3 @@
-/*import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-import { Link } from "react-router-dom";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
-//import { Sign_img } from "./components/Sign_img";
-import { Sign_img } from "./Sign_img";
-
-import { connect } from "react-redux";
-import { login } from "../actions/auth";
-
-const required = (value) => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
-
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-
-    this.state = {
-      username: "",
-      password: "",
-      loading: false,
-    };
-  }
-
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value,
-    });
-  }
-
-  handleLogin(e) {
-    e.preventDefault();
-
-    this.setState({
-      loading: true,
-    });
-
-    this.form.validateAll();
-
-    const { dispatch, history } = this.props;
-
-    if (this.checkBtn.context._errors.length === 0) {
-      dispatch(login(this.state.username, this.state.password))
-        .then(() => {
-          console.log("Signed in successfully");
-          alert("Signed in Successfully");
-          history.push("/home");
-          //window.location.reload();
-        })
-        .catch(() => {
-          this.setState({
-            loading: false
-          });
-        });
-    } else {
-      this.setState({
-        loading: false,
-      });
-    }
-  }
-
-  render() {
-    const { isLoggedIn, message } = this.props;
-
-    if (isLoggedIn) {
-      return <Redirect to="/profile" />;
-    }
-
-    return (
-      <div class="formCenter">
-
-        <div className="formField col-lg-10">
-          <h1><center>Login</center></h1>
-          <Form
-            onSubmit={this.handleLogin}
-            ref={(c) => {
-              this.form = c;
-            }}
-          >
-            <div className="form-group">
-
-              <Input
-                type="text"
-                className="form-control"
-                name="username"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                validations={[required]}
-                placeholder="Enter your Email"
-              />
-            </div>
-
-            <div className="form-group">
-
-              <Input
-                type="password"
-                className="form-control"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                validations={[required]}
-                placeholder="Enter your Password"
-              />
-            </div>
-
-            <div className="form-group">
-              <button
-                className="btn btn-dark btn-block"
-                disabled={this.state.loading}
-              >
-                {this.state.loading && (
-                  <span className="spinner-border spinner-border-sm"></span>
-                )}
-                <span>Login</span>
-              </button><h2></h2>
-              <p><i><h6>Create an Account!  <Link to="/register" className="formFieldLink">
-                Sign Up
-              </Link></h6></i></p>
-            </div>
-
-
-
-            {message && (
-              <div className="form-group">
-                <div className="alert alert-danger" role="alert">
-                  {message}
-                </div>
-              </div>
-            )}
-            <CheckButton
-              style={{ display: "none" }}
-              ref={(c) => {
-                this.checkBtn = c;
-              }}
-            />
-          </Form>
-
-
-        </div>
-        <div className=" col-sm-6">
-          <section className="d-flex justify-content-between">
-            <Sign_img />
-          </section>
-        </div>
-
-
-
-      </div>
-        
-        );
-  }
-}
-
-function mapStateToProps(state) {
-  const { isLoggedIn } = state.auth;
-  const { message } = state.message;
-  return {
-    isLoggedIn,
-    message
-  };
-}
-
-export default connect(mapStateToProps)(Login);
-*/
-
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -369,3 +186,194 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Login);
+
+
+
+
+
+
+
+
+/*import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+//import { Sign_img } from "./components/Sign_img";
+import { Sign_img } from "./Sign_img";
+
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
+
+const required = (value) => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
+  }
+};
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+
+    this.state = {
+      username: "",
+      password: "",
+      loading: false,
+    };
+  }
+
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
+
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+
+    this.setState({
+      loading: true,
+    });
+
+    this.form.validateAll();
+
+    const { dispatch, history } = this.props;
+
+    if (this.checkBtn.context._errors.length === 0) {
+      dispatch(login(this.state.username, this.state.password))
+        .then(() => {
+          console.log("Signed in successfully");
+          alert("Signed in Successfully");
+          history.push("/home");
+          //window.location.reload();
+        })
+        .catch(() => {
+          this.setState({
+            loading: false
+          });
+        });
+    } else {
+      this.setState({
+        loading: false,
+      });
+    }
+  }
+
+  render() {
+    const { isLoggedIn, message } = this.props;
+
+    if (isLoggedIn) {
+      return <Redirect to="/profile" />;
+    }
+
+    return (
+      <div class="formCenter">
+
+        <div className="formField col-lg-10">
+          <h1><center>Login</center></h1>
+          <Form
+            onSubmit={this.handleLogin}
+            ref={(c) => {
+              this.form = c;
+            }}
+          >
+            <div className="form-group">
+
+              <Input
+                type="text"
+                className="form-control"
+                name="username"
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+                validations={[required]}
+                placeholder="Enter your Email"
+              />
+            </div>
+
+            <div className="form-group">
+
+              <Input
+                type="password"
+                className="form-control"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                validations={[required]}
+                placeholder="Enter your Password"
+              />
+            </div>
+
+            <div className="form-group">
+              <button
+                className="btn btn-dark btn-block"
+                disabled={this.state.loading}
+              >
+                {this.state.loading && (
+                  <span className="spinner-border spinner-border-sm"></span>
+                )}
+                <span>Login</span>
+              </button><h2></h2>
+              <p><i><h6>Create an Account!  <Link to="/register" className="formFieldLink">
+                Sign Up
+              </Link></h6></i></p>
+            </div>
+
+
+
+            {message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {message}
+                </div>
+              </div>
+            )}
+            <CheckButton
+              style={{ display: "none" }}
+              ref={(c) => {
+                this.checkBtn = c;
+              }}
+            />
+          </Form>
+
+
+        </div>
+        <div className=" col-sm-6">
+          <section className="d-flex justify-content-between">
+            <Sign_img />
+          </section>
+        </div>
+
+
+
+      </div>
+        
+        );
+  }
+}
+
+function mapStateToProps(state) {
+  const { isLoggedIn } = state.auth;
+  const { message } = state.message;
+  return {
+    isLoggedIn,
+    message
+  };
+}
+
+export default connect(mapStateToProps)(Login);
+*/
+

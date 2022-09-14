@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import CreateDrugComponent from "./createdrugs";
 import Navbar from "./Navbar";
+import Landingpage from "./Landingpage";
 
 class Profile extends Component {
 
@@ -18,8 +19,10 @@ class Profile extends Component {
     return (
 
       <div>
-        <Navbar/>
-        {/*<CreateDrugComponent/>*/}
+       {/*<Navbar/>*/}
+        <Landingpage/>
+
+        {/*<CreateDrugComponent/>
         <h1>Welcome to XYZ Pharmacy Management</h1>
         {/*<p>
           <strong>Id:</strong> {currentUser.id}

@@ -47,6 +47,9 @@ label {
 .Sign_img{
   text-align: right;
 }
+.bg-image2{
+  background-image: url('https://thumbs.dreamstime.com/b/pink-wedding-blossom-website-header-wide-soft-focus-background-delicate-apple-right-hand-side-plenty-copy-space-51691229.jpg');
+}
 
 /* .form-group{
   padding-bottom: 5px;

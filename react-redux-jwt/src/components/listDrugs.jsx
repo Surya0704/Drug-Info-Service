@@ -45,7 +45,7 @@ class ListDrugs extends Component {
                 <Navbar/>              
                  
                  <div className = "card row">
-                 <button className="btn btn-primary" onClick={this.addDrugs}> Add Drugs</button>
+                 <button className="btn btn-primary " onClick={this.addDrugs}> Add Drugs</button>
                 {/* <div className = "row">
                    
         </div>*/}

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../actions/auth";
 import './register.css'
+import Navbar_beforeLogin from "./Navbar_beforeLogin";
 
 const required = (value) => {
   if (!value) {
@@ -131,6 +132,9 @@ class Register extends Component {
     const { message } = this.props;
 
     return (
+      <div>
+        <Navbar_beforeLogin/>
+      
       
 
       <div className="col-md-12">
@@ -226,6 +230,7 @@ class Register extends Component {
             />
           </Form>
         </div>
+      </div>
       </div>
     );
   }
