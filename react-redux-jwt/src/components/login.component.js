@@ -61,7 +61,13 @@ class Login extends Component {
       dispatch(login(this.state.username, this.state.password))
      
         .then(() => {
-          history.push("/profile");
+          if(this.state.username==="admin"){
+            history.push("/profile");
+          }
+          else{
+            history.push("/Drugs");
+          }
+          //history.push("/profile");
           //   window.location.reload();
           console.log("logged in ");
           alert("Successfully logged in");
@@ -104,7 +110,7 @@ class Login extends Component {
 
           <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>
             <div className="row g-0">
-              <div className="d-none d-md-flex col-md-2 col-lg-5 bg-image"style={{ marginLeft: "100px" , marginTop:"100px"}}></div>
+              <div className="d-none d-md-flex col-md-1 col-lg-5 bg-image"style={{ marginLeft: "100px" , marginTop:"100px"}}></div>
 
               <div className="col-md-8 col-lg-6">
                 <div className="login d-flex align-items-center py-5">

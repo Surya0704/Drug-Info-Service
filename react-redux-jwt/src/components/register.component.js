@@ -121,7 +121,9 @@ class Register extends Component {
         .then(() => {
           this.setState({
             successful: true,
+            
           });
+         // history.push("/login");
           alert("Registered successfully, Login to continue");
           console.log("Registered successfully");
         })
@@ -138,18 +140,16 @@ class Register extends Component {
 
     return (
       <div>
-        <Navbar_beforeLogin />
-        
+        <Navbar_beforeLogin />       
 
         <Form
-          onSubmit={this.handleLogin}
+          onSubmit={this.handleRegister}
           ref={(c) => {
             this.form = c;
           }}
         >
          
-        <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>
-            
+        <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>         
             
             
             
