@@ -110,10 +110,10 @@ class Login extends Component {
 
           <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>
             <div className="row g-0">
-              <div className="d-none d-md-flex col-md-1 col-lg-5 bg-image"style={{ marginLeft: "100px" , marginTop:"100px"}}></div>
+              <div className=" d-md-flex col-md-1 col-lg-5 bg-image"style={{ marginLeft: "100px" , marginTop:"100px"}}></div>
 
               <div className="col-md-8 col-lg-6">
-                <div className="login d-flex align-items-center py-5">
+                <div className="login d-flex align-items-center py-6">
 
 
                   <div className="container ">

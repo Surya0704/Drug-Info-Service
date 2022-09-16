@@ -9,6 +9,7 @@ import './login.css'
 
 import { connect } from "react-redux";
 import { register } from "../actions/auth";
+import { toBeDisabled } from "@testing-library/jest-dom";
 
 const required = (value) => {
   if (!value) {
@@ -126,6 +127,7 @@ class Register extends Component {
          // history.push("/login");
           alert("Registered successfully, Login to continue");
           console.log("Registered successfully");
+          this.props.history.push("/login");
         })
         .catch(() => {
           this.setState({
