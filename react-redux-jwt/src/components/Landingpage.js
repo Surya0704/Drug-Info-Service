@@ -99,9 +99,9 @@ const Landingpage = () => {
         <div class="container">
           <section>
             <div class="row">
-              <div class="col-md-6 gx-5 mb-4">
+              <div class="col-md-5 gx-5 mb-4">
                 <div
-                  class="bg-image hover-overlay ripple shadow-2-strong rounded-5"
+                  class=" hover-overlay ripple shadow-2-strong rounded-5"
                   data-mdb-ripple-color="light"
                 >
                   <img
@@ -155,7 +155,7 @@ const Landingpage = () => {
               <div class="col-lg-4 col-md-12 mb-4">
                 <div class="card">
                   <div
-                    class="bg-image hover-overlay ripple"
+                    class=" hover-overlay ripple"
                     data-mdb-ripple-color="light"
                   >
                     <img
@@ -188,7 +188,7 @@ const Landingpage = () => {
               <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
                   <div
-                    class="bg-image hover-overlay ripple"
+                    class=" hover-overlay ripple"
                     data-mdb-ripple-color="light"
                   >
                     <img
@@ -223,7 +223,7 @@ const Landingpage = () => {
               <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
                   <div
-                    class="bg-image hover-overlay ripple"
+                    class="hover-overlay ripple"
                     data-mdb-ripple-color="light"
                   >
                     <img

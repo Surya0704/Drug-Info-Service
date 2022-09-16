@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin
 public class OrderController {
 
     @Autowired
@@ -51,29 +52,40 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveOrder(@RequestBody Order order) throws ResourceNotFoundException{
+    public ResponseEntity<Order> saveOrder(@RequestBody Order order) throws ResourceNotFoundException{
 
         String drugname = order.getDrugname();
-        String doctoremail = order.getDoctoremail();
-        if((drugname)== null || (doctoremail == null)){
+        String doctorname = order.getDoctorname();
+        if((drugname)== null ){
             throw new ResourceNotFoundException("No Drug Found with name "+drugname +
-                    "and no doctor found by name "+ doctoremail);
+                    "and no doctor found by name "+ doctorname);
         }
         else {
             DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" +
                     drugname, DrugsData.class);
 //            DoctorsData doctorsData = restTemplate.getForObject("http://User-Service/doctors/username/" +
 //                    doctoremail, DoctorsData.class);
-            double cost = drugsData.getDrugPrice() * order.getQuantity();
-            //String dName = doctorsData.getName();
-            order.setCost(cost);
-            //order.setDoctorname(dName);
-            order.setId(sequenceGeneratorService.getSequenceNumber(Order.SEQUENCE_NAME));
-            //String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by "+
-                   //dName;
-            String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by " ;
-            Order savedOrder = orderService.saveOrder(order);
-            return ResponseEntity.ok(x);
+            int q1 = drugsData.getDrugQuantity();
+            int l;
+            if(q1>order.getQuantity()) {
+                double cost = drugsData.getDrugPrice() * order.getQuantity();
+                l=q1- order.getQuantity();
+                drugsData.setDrugQuantity(l);
+                //String dName = doctorsData.getName();
+                order.setCost(cost);
+                //order.setDoctorname(dName);
+                order.setId(sequenceGeneratorService.getSequenceNumber(Order.SEQUENCE_NAME));
+                //String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by "+
+                //dName;
+                String x = "Your order with order Id " + order.getId() + " with value " + cost + " is placed by " + doctorname;
+                System.out.println(x);
+                Order savedOrder = orderService.saveOrder(order);
+                return ResponseEntity.ok(savedOrder);
+            }
+            else {
+                throw new ResourceNotFoundException("Not enough Stock");
+            }
+            //return ResponseEntity.ok(x);
         }
 
     }
