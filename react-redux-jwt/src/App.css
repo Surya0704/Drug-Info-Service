@@ -35,8 +35,7 @@ label {
 }
 .bg-image{
   background-image: url('./components/signup_image.jpeg');
-  background-size: cover;
- background-position: center;
+  
 }
 
 .profile-img-card {

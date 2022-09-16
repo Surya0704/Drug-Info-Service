@@ -134,7 +134,7 @@ class CreateDrugComponent extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label> Date: </label>
-                                        < input placeholder="Date" name="expiryDate" className="form-control"
+                                        < input placeholder="Date" name="expiryDate" className="form-control" type="Date"
                                             value={this.state.expiryDate} onChange={this.changeexpiryDateHandler} />
                                     </div>
 

@@ -37,7 +37,7 @@ class AddOrder extends Component {
         e.preventDefault();
         let order = {date: this.state.date, quantity: this.state.quantity, drugname: this.state.drugname, doctorname: this.state.doctorname };
         console.log('order => ' + JSON.stringify(order));
-        console.log("order successfully");
+        //console.log("order successfully");
 
         // step 5
 
@@ -78,17 +78,9 @@ render(){
                 ref={(c) => {
                     this.form = c;
                 }}
-            >
-
-                <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>
-
-
-
-
-
-
-                    <div className="col-md-4 bg-image" style={{ margin: "50px" }}>
-                        <div className="col-md-12 card bg-light text-dark" style={{ marginLeft: "700px" }} >
+            >              
+                    
+                        <div className="col-md-6 card bg-light text-dark"  >
                             <h1>
                                 <center>Place your Order</center>
                             </h1>
@@ -183,8 +175,8 @@ render(){
                             />
 
                         </div>
-                    </div>
-                </div>
+                    
+               
             </Form>
         </div>
 
