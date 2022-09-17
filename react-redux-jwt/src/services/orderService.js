@@ -16,13 +16,16 @@ class OrderService {
     getAllOrders(){
         return axios.get(ORDER_API_BASE_URL_1 + 'order/');
     }
-
     saveOrder(order){
         return axios.post(ORDER_API_BASE_URL_1 + 'order/save', order);
     }
     deleteOrder(orderId){
         return axios.delete(ORDER_API_BASE_URL_1 + 'order/delete/' + orderId);
     }
+    getOrderbyId(id){
+        return axios.get(ORDER_API_BASE_URL_1 + 'order/'+id);
+    }
+    
     /*getAllDrugs(){
         return axios.get(DRUG_API_BASE_URL + 'doctors/drugs/all');
     }*/

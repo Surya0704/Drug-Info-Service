@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //const DRUG_API_BASE_URL = "http://localhost:8082/";
-const DRUG_API_BASE_URL_1 = "http://localhost:8081/";
+const DRUG_API_BASE_URL_1 = "http://localhost:8081/api/";
 /*const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -18,7 +18,7 @@ class DrugService {
         return axios.get(DRUG_API_BASE_URL + 'doctors/drugs/all');
     }*/
     getAllDrugs(){
-        return axios.get(DRUG_API_BASE_URL_1 + 'drugs/');
+        return axios.get(DRUG_API_BASE_URL_1 + 'drugs');
     }
 
     saveDrugs(drugs){

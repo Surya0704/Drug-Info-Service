@@ -17,6 +17,9 @@ class ViewDrugs extends Component {
         drugService.getDrugById(this.state.id).then( res => {
             this.setState({drugs: res.data});
         })
+        drugService.getDrugByName(this.state.id).then( res => {
+            this.setState({drugs: res.data});
+        })
     }
 
     render() {

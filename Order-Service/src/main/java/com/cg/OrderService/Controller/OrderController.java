@@ -61,16 +61,16 @@ public class OrderController {
                     "and no doctor found by name "+ doctorname);
         }
         else {
-            DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/drugs/drugsname/" +
+            DrugsData drugsData = restTemplate.getForObject("http://Drugs-Info-Service/api/drugs/drugsname/" +
                     drugname, DrugsData.class);
 //            DoctorsData doctorsData = restTemplate.getForObject("http://User-Service/doctors/username/" +
 //                    doctoremail, DoctorsData.class);
             int q1 = drugsData.getDrugQuantity();
-            int l;
+            //int l;
             if(q1>order.getQuantity()) {
                 double cost = drugsData.getDrugPrice() * order.getQuantity();
-                l=q1- order.getQuantity();
-                drugsData.setDrugQuantity(l);
+//                l=q1- order.getQuantity();
+//                drugsData.setDrugQuantity(l);
                 //String dName = doctorsData.getName();
                 order.setCost(cost);
                 //order.setDoctorname(dName);

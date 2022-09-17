@@ -19,7 +19,7 @@ class Profile extends Component {
     return (
 
       <div>
-       {/*<Navbar/>*/}
+       <Navbar/>
         <Landingpage/>
 
         {/*<CreateDrugComponent/>

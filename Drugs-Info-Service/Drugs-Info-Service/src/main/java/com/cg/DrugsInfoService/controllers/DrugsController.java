@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/drugs")
+@RequestMapping("/api")
 @CrossOrigin
 public class DrugsController {
 
@@ -21,7 +21,7 @@ public class DrugsController {
     @Autowired
     DrugService drugService;
 
-    @GetMapping("/")
+    @GetMapping("/drugs")
     public ResponseEntity<List<DrugsData>> getAllDrugsData() throws ResourceNotFoundException {
         List<DrugsData> list = drugService.getAllDrugsData();
         if (list.isEmpty()) {
@@ -30,7 +30,7 @@ public class DrugsController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/drugs/{id}")
     public ResponseEntity<DrugsData> findDrugsById(@PathVariable("id") int drugId) throws ResourceNotFoundException {
         Optional<DrugsData> drugsDataOptional = drugService.findDrugsById(drugId);
         if (drugsDataOptional.isEmpty()) {
@@ -39,7 +39,7 @@ public class DrugsController {
         return ResponseEntity.ok(drugsDataOptional.get());
     }
 
-    @GetMapping("/drugsname/{drugName}")
+    @GetMapping("/drugs/drugsname/{drugName}")
     public ResponseEntity<DrugsData> getDrugsDataByDrugName(@PathVariable("drugName") String drugName) throws ResourceNotFoundException {
         Optional<DrugsData> drugsDataOptional = drugService.getDrugsDataByDrugName(drugName);
         if (drugsDataOptional.isEmpty()) {
@@ -50,7 +50,7 @@ public class DrugsController {
 
 
 
-    @PostMapping("/save")
+    @PostMapping("/drugs/save")
     public ResponseEntity<DrugsData> saveDrugs(@RequestBody DrugsData drugsData) {
 
         drugsData.setDrugId(sequenceGeneratorService.getSequenceNumber(DrugsData.SEQUENCE_NAME));
@@ -59,7 +59,7 @@ public class DrugsController {
     }
 
     //update function
-    @PutMapping("/update/{id}")
+    @PutMapping("/drugs/update/{id}")
     public ResponseEntity<DrugsData> updateDrugsData(@RequestBody DrugsData drugsData ,
                                                      @PathVariable("id") int drugId){
         DrugsData updatedDrugsData = drugService.updateDrugsData(drugsData,drugId);
@@ -67,7 +67,7 @@ public class DrugsController {
 
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/drugs/delete/{id}")
     public void deleteDrugsData(@PathVariable("id") int drugId) throws ResourceNotFoundException
     {
         Optional<DrugsData> drugsData = drugService.findDrugsById(drugId);

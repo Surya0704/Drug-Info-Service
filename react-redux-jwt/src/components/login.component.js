@@ -65,7 +65,7 @@ class Login extends Component {
             history.push("/profile");
           }
           else{
-            history.push("/Drugs");
+            history.push("/profile2");
           }
           //history.push("/profile");
           //   window.location.reload();

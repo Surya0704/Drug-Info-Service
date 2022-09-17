@@ -21,6 +21,8 @@ public class Order {
     @Id
     private int id;
     private double cost;
+//    @JsonFormat(pattern = "yyyy-mm-dd")
+//    @DateTimeFormat(pattern = "yyyy-mm-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;

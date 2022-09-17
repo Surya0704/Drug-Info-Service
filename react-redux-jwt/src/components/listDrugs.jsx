@@ -28,6 +28,7 @@ class ListDrugs extends Component {
     updateDrugs(id){
         this.props.history.push(`/add-drug/${id}`);
     }
+    
 
     componentDidMount(){
         drugService.getAllDrugs().then((res) => {
