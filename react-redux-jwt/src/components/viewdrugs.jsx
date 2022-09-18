@@ -30,7 +30,7 @@ class ViewDrugs extends Component {
                 <br></br>
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Drug Details</h3>
-                    <div className = "card-body">
+                    <div className = "card-body" style={{ background: "rgb(47,79,79)" }}>
                         <div className='row' >
                             <label> <h4>Drug Name: </h4>   <i> { this.state.drugs.drugName }</i></label>                            
                         </div>

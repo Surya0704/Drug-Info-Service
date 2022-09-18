@@ -20,16 +20,18 @@ function Navbar() {
                         <li class="nav-item">
                             <a class="nav-link" href="/Orders"><h4>All Orders</h4></a>
                         </li>
+                         
                         
                     </ul>
                     
                 </div>
-            </div>
+            
             <form class="d-flex">
                         <input class="form-control me-2 " type="text" placeholder="Search Drugs  " />
                         <button class="btn text-white" type="button">Search</button>              
             </form>
             <a class="nav-link" href="/home"><h1><MdOutlineLogout/></h1></a> 
+            </div>
         </nav>
 
 

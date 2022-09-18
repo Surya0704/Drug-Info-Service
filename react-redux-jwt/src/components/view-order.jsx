@@ -26,10 +26,10 @@ class ViewOrders extends Component {
                 <Navbar/>
 
                 <br></br>
-                <div className = "card col-md-6 offset-md-3">
-                    <h3 className = "text-center"> View Order Details</h3>
-                    <div className = "card-body">
-                        <div className='row' >
+                <div className = "card col-md-6 offset-md-3" >
+                    <h3 className = "text-center" > View Order Details</h3>
+                    <div className = "card-body" style={{ background: "rgb(47,79,79)" }}>
+                        <div className='row'  >
                             <label> <h4>Drug Name: </h4>   <i> { this.state.orders.drugname }</i></label>                            
                         </div>
                         <div className='row' >

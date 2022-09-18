@@ -108,21 +108,21 @@ class Login extends Component {
 
 
 
-          <div className="container-fluid ps-md-0" style={{ marginTop: "50px" }}>
+          <div className="container-fluid ps-md-0" style={{ marginTop: "0px" }}>
             <div className="row g-0">
-              <div className=" d-md-flex col-md-2 col-lg-5 bg-image"style={{ marginLeft: "100px" , marginTop:"100px"}}></div>
+              <div className=" d-md-flex col-md-3 col-lg-5 bg-image"style={{ marginLeft: "10px" , marginTop:"105px"}}></div>
 
               <div className="col-md-8 col-lg-6">
                 <div className="login d-flex align-items-center py-6">
 
 
-                  <div className="container ">
-                    <div className="row">
-                      <div className="col-md-9 col-lg-8 mx-auto my-container">
+                  <div className="container " style={{ marginLeft: "80px" }}>
+                    <div className="row"  >
+                      <div className="col-md-9 col-lg-12 mx-auto my-container" >
                         <h3 className="login-heading mb-4" >Welcome back!</h3>
 
-                        <div className="form-floating mb-3">
-                          <Input type="text" className="form-control" placeholder="name@example.com" name="username" value={this.state.username}
+                        <div className="form-floating mb-4">
+                          <Input type="text" className="form-control" placeholder="Enter your email Id" name="username" value={this.state.username}
                             onChange={this.onChangeUsername} validations={[required]}
                           />
                           {/* <label htmlFor="floatingPassword">Password</label> */}

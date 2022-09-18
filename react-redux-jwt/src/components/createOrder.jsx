@@ -49,7 +49,7 @@ class AddOrder extends Component {
             //const order=this.state.order;
             //const order_id=order.id;   
             
-            //this.props.history.push('/view-order/${order_id}');
+            this.props.history.push("/profile2");
             alert("Ordered successfully");
             console.log("Ordered successfully");
         });

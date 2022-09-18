@@ -26,6 +26,9 @@ import createOrder from "./components/createOrder.jsx";
 import profile2Component from "./components/profile2.component";
 import ListOrders from "./components/listOrder";
 import ViewOrders from "./components/view-order.jsx";
+import DrugsList from "./components/drugList2";
+import Aboutus from "./components/AboutUs";
+
 
 
 
@@ -85,8 +88,10 @@ class App extends Component {
                <Route exact path="/add-drug/:id" component={CreateDrugComponent} />
                <Route path = "/view-drug/:id" component = {ViewDrugs}></Route>
                <Route path = "/Drugs" exact component = {ListDrugs}></Route>
+               <Route path = "/Drugs2" exact component = {DrugsList}></Route>
                <Route path = "/Order" exact component = {createOrder}></Route>
                <Route path = "/Orders" exact component = {ListOrders}></Route>
+               <Route path = "/AboutUs" exact component = {Aboutus}></Route>
                <Route path = "/view-order/:id" exact component = {ViewOrders}></Route>
 
              </Switch>

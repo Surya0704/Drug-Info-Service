@@ -18,7 +18,7 @@ function Navbar() {
                             <a class="nav-link" href="/order"><h4>Order</h4></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)"><h4>Doctors</h4></a>
+                            <a class="nav-link" href="/drugs2"><h4>Drugs</h4></a>
                         </li>
                         
                     </ul>

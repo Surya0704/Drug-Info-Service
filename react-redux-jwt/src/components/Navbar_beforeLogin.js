@@ -10,18 +10,21 @@ export class Navbar_beforeLogin extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark">
+          <li>
           <Link to={"/"} className="navbar-brand">
             <h5>
               <FaHome /> XYZ Pharmacy
             </h5>
           </Link>
+          </li>
+          <li>
 
-          <Link to={"/"} className="navbar-brand">
+          <Link to={"/AboutUs"} className="navbar-brand">
             <h5>
               <FaBook /> About Us
             </h5>
           </Link>
-
+</li>
           
           
 
