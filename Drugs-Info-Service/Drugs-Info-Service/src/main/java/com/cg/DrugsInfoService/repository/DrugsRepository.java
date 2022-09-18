@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface DrugsRepository extends MongoRepository<DrugsData,Integer> {
 
     Optional<DrugsData> getDrugsDataByDrugName(String drugName);
+
+   // Boolean isDrugExistsById(int id);
 }
