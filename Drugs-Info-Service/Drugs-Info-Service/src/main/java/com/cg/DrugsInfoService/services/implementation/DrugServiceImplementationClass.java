@@ -16,8 +16,6 @@ public class DrugServiceImplementationClass implements DrugService {
     @Autowired
     DrugsRepository drugsRepository;
 
-
-
     @Override
     public Optional<DrugsData> getDrugsDataByDrugName(String drugName) {
         return drugsRepository.getDrugsDataByDrugName(drugName);
