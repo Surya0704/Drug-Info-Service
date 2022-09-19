@@ -39,7 +39,7 @@ public class OrderRepoTest {
         }
     }
     @Test
-    public void getAllDrugsDataTest()
+    public void getAllOrdersTest()
     {
         List<Order> list = new ArrayList<Order>();
         Order order1 = new Order(1000,150, LocalDate.of(2022,05,04),
