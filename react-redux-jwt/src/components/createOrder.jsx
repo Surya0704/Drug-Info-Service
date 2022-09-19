@@ -99,7 +99,7 @@ render(){
 
                             {!this.state.successful && (
                                 <div>
-                                    <div className="form-group">
+                                    <div className="form-group" >
                                         <Input
                                             type="Date"
                                             className="form-control"

@@ -115,7 +115,7 @@ class CreateDrugComponent extends Component {
                             {
                                 this.getTitle()
                             }
-                            <div className="card-body ">
+                            <div className="card-body " style={{ background: "rgb(47,79,79)" }}>
                                 <form>
                                     <div className="form-group">
                                         <label> Drug Name: </label>
@@ -133,7 +133,7 @@ class CreateDrugComponent extends Component {
                                             value={this.state.drugQuantity} onChange={this.changedrugQuantityHandler} />
                                     </div>
                                     <div className="form-group">
-                                        <label> Date: </label>
+                                        <label> Expiry Date: </label>
                                         < input placeholder="Date" name="expiryDate" className="form-control" type="Date"
                                             value={this.state.expiryDate} onChange={this.changeexpiryDateHandler} />
                                     </div>

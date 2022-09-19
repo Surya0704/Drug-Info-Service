@@ -145,7 +145,7 @@ class Login extends Component {
 
                           <div className="text-center">
                             {/* <a className="small me-2" href="!#">Forgot password?</a> */}
-                            <Link to="/register" style={{ textDecoration: "none" }}><span id="register-here">Register with us?</span></Link>
+                            <Link to="/register" style={{ textDecoration: "none" }}><span id="register-here"><i>Register with us?</i></span></Link>
                           </div>
                         </div>
                         {/* <div className="text-center mt-2" style={{color: 'red', minHeight: '25px'}} dangerouslySetInnerHTML={{__html: error}} /> */}
