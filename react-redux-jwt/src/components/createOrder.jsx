@@ -48,8 +48,10 @@ class AddOrder extends Component {
         orderService.saveOrder(order).then(res => {         
             //const order=this.state.order;
             //const order_id=order.id;   
-            
-            this.props.history.push("/profile2");
+           // this.setState({id:order.id});
+            //console.log(this.state.id);            
+            this.props.history.push("/drugs2");
+           // this.props.history.push(`/view-order/`:id);
             alert("Ordered successfully");
             console.log("Ordered successfully");
         });
@@ -114,6 +116,7 @@ render(){
 
                                     <div className="form-group">
                                         <Input
+                                        
                                             type="number"
                                             className="form-control"
                                             name="quantity"
@@ -121,6 +124,7 @@ render(){
                                             onChange={this.changequantityHandler}
                                             required
                                             placeholder="Enter the no of drugs you want"
+                                                                                        
                                         />
                                     </div>
 

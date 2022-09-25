@@ -119,7 +119,7 @@ class CreateDrugComponent extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label> Drug Name: </label>
-                                        <input placeholder="First Name" name="drugName" className="form-control"
+                                        <input placeholder="Drug Name" name="drugName" className="form-control"
                                             value={this.state.drugName} onChange={this.changedrugNameHandler} />
                                     </div>
                                     <div className="form-group">

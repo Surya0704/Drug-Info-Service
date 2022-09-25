@@ -151,10 +151,7 @@ class Register extends Component {
           }}
         >
          
-        <div className="container-fluid ps-md-0" style={{ marginTop: "50px", marginBottom:"50px" }}>         
-            
-            
-            
+        <div className="container-fluid ps-md-0" style={{ marginTop: "50px", marginBottom:"50px" }}> 
       
         
 
@@ -204,7 +201,7 @@ class Register extends Component {
 
                   <div className="form-group">
                     <Input
-                      type="doctor_password"
+                      type="password"
                       className="form-control"
                       name="doctor_password"
                       value={this.state.doctor_password}

@@ -177,7 +177,7 @@ const Landingpage = () => {
                       that requires only 1 test, results in 15 minutes, Nasal
                       Swab.
                     </p>
-                    <a href="#!" class="btn btn-primary">
+                    <a href="/order" class="btn btn-primary">
                       Buy Now
                     </a>
                   </div>
@@ -212,7 +212,7 @@ const Landingpage = () => {
                       allergy relief medicine provides 24 hours of relief from
                       common symptom
                     </p>
-                    <a href="#!" class="btn btn-primary">
+                    <a href="/order" class="btn btn-primary">
                       Buy Now
                     </a>
                   </div>
@@ -244,7 +244,7 @@ const Landingpage = () => {
                       finger inside the advanced meter to quickly obtain an
                       accurate reading.
                     </p>
-                    <a href="#!" class="btn btn-primary">
+                    <a href="/order" class="btn btn-primary">
                       Buy Now
                     </a>
                   </div>
