@@ -171,7 +171,7 @@ class Register extends Component {
                       value={this.state.name}
                       onChange={this.onChangename}
                       validations={[required, name]}
-                      placeholder="Enter your name"
+                      placeholder="Enter your Name"
                     />
                   </div>
 
@@ -207,7 +207,7 @@ class Register extends Component {
                       value={this.state.doctor_password}
                       onChange={this.onChangedoctor_password}
                       validations={[required, doctor_password]}
-                      placeholder="Enter your password"
+                      placeholder="Enter a password"
                     />
                   </div>
 

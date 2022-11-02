@@ -125,14 +125,14 @@ class Login extends Component {
                           <Input type="text" className="form-control" placeholder="Enter your email Id" name="username" value={this.state.username}
                             onChange={this.onChangeUsername} validations={[required]}
                           />
-                          {/* <label htmlFor="floatingPassword">Password</label> */}
+                          
 
                         </div>
                         <div className="form-floating mb-3">
                           <Input type="password" className="form-control" placeholder="Password" name="password" value={this.state.password}
-                            onChange={this.onChangePassword} validations={[required]} />
-                          {/* <label htmlFor="floatingPassword">Password</label> */}
+                            onChange={this.onChangePassword} validations={[required]} />                          
                         </div>
+                        
                         <div className="d-grid">
                           <button className="btn btn-lg btn-primary btn-login mb-2" type="submit" disabled={this.state.loading}>
                             {this.state.loading && (
