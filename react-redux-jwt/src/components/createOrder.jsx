@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { isEmail } from "validator";
-import { Link } from "react-router-dom";
-import Navbar_beforeLogin from "./Navbar_beforeLogin";
-import { useEffect } from "react";
 import './login.css'
 import orderService from "../services/orderService";
-
-import { connect } from "react-redux";
 import Navbar from "./Navbar2";
 //import { register } from "../actions/auth";
 class AddOrder extends Component {
@@ -41,18 +35,13 @@ class AddOrder extends Component {
         e.preventDefault();
         let order = {date: this.state.date, quantity: this.state.quantity, drugname: this.state.drugname, doctorname: this.state.doctorname };
         console.log('order => ' + JSON.stringify(order));
-        //console.log("order successfully");
-
-        // step 5
+      
 
         orderService.saveOrder(order).then(res => {         
-            //const order=this.state.order;
-            //const order_id=order.id;   
-           // this.setState({id:order.id});
-            //console.log(this.state.id);            
+                        
             this.props.history.push("/drugs2");
-           // this.props.history.push(`/view-order/`:id);
-            alert("Ordered successfully");
+           
+            alert("Ordered successfully hello");
             console.log("Ordered successfully");
         });
     }
@@ -78,9 +67,6 @@ class AddOrder extends Component {
 
 render(){
     const { message } = this.props;
-    //const { id } = this.props;
-    //const order = this.state.order;
-    //const order_id= order.id;
 
     return (
         <div>
