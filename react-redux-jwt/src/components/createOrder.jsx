@@ -41,7 +41,7 @@ class AddOrder extends Component {
                         
             this.props.history.push("/drugs2");
            
-            alert("Ordered successfully hello");
+            alert("Ordered successfully ");
             console.log("Ordered successfully");
         });
     }
